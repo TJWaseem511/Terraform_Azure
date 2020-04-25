@@ -7,3 +7,6 @@ output "vNet_name"{
 output "tf_backend_id"{
   value = azurerm_storage_account.tfbackend.id
 }
+output "tf_backend_container_name"{
+  value = azurerm_storage_container.tfbackendcontainer.name
+}

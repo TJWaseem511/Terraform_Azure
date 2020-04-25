@@ -11,13 +11,6 @@ resource "azurerm_resource_group" "rgs"{
     name = var.rg_name
 }
 
-resource "azurerm_network_security_group" "sec_grp" {
-  # A security group to secure Virtual network
-  name                = "acceptanceTestSecurityGroup1"
-  location            = azurerm_resource_group.rgs.location
-  resource_group_name = azurerm_resource_group.rgs.name
-}
-
 resource "azurerm_virtual_network" "virt_net" {
   # The actual virtual network
   name                = "dummy_vir_net"
@@ -40,7 +33,6 @@ resource "azurerm_virtual_network" "virt_net" {
   subnet {
     name           = "subnet3"
     address_prefix = "10.0.3.0/24"
-    security_group = azurerm_network_security_group.sec_grp.id
   }
 
   tags = {
