@@ -18,13 +18,6 @@ resource "azurerm_network_security_group" "sec_grp" {
   resource_group_name = azurerm_resource_group.rgs.name
 }
 
-resource "azurerm_network_ddos_protection_plan" "ddos_p_plan" {
-  # A DDOS plan to repel DDOS attack
-  name                = "ddospplan1"
-  location            = azurerm_resource_group.rgs.location
-  resource_group_name = azurerm_resource_group.rgs.name
-}
-
 resource "azurerm_virtual_network" "virt_net" {
   # The actual virtual network
   name                = "dummy_vir_net"
@@ -32,12 +25,6 @@ resource "azurerm_virtual_network" "virt_net" {
   resource_group_name = azurerm_resource_group.rgs.name
   address_space       = ["10.0.0.0/16"]
   dns_servers         = ["10.0.0.4", "10.0.0.5"]
-
-  ddos_protection_plan {
-    # Assigning the created ddos plan
-    id     = azurerm_network_ddos_protection_plan.ddos_p_plan.id
-    enable = true
-  }
 
   # Subnets
   subnet {
