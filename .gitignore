@@ -1,2 +1,3 @@
 terraform.exe
 .terraform/plugins/*
+.terraform/plugins/windows_amd64/lock.json
