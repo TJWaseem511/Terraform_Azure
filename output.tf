@@ -4,3 +4,9 @@ output "resource_group_id"{
 output "vNet_name"{
   value = azurerm_virtual_network.virt_net.name
 }
+output "tf_backend_id"{
+  value = azurerm_storage_account.tfbackend.id
+}
+output "tf_backend_container_name"{
+  value = azurerm_storage_container.tfbackendcontainer.name
+}
